@@ -45,13 +45,13 @@
 int main(int argc, char *argv[])
 {
 
-#ifdef Q_OS_WIN
-	//enables automatic scaling based on the monitor's pixel density
-	ccViewerApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+// #ifdef Q_OS_WIN
+// 	//enables automatic scaling based on the monitor's pixel density
+// 	ccViewerApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+// #endif
 
 	ccViewerApplication::InitOpenGL();
-	
+
 	// Convert the input arguments to QString before the application is initialized
 	// (as it will force utf8, which might prevent from properly reading filenmaes from the command line)
 	QStringList argumentsLocal8Bit;
@@ -73,10 +73,10 @@ int main(int argc, char *argv[])
 #ifdef USE_VLD
 	VLDEnable();
 #endif
-	
+
 	QDir workingDir = QCoreApplication::applicationDirPath();
-	
-#ifdef Q_OS_MAC	
+
+#ifdef Q_OS_MAC
 	// This makes sure that our "working directory" is not within the application bundle
 	if ( workingDir.dirName() == "MacOS" )
 	{
@@ -85,9 +85,9 @@ int main(int argc, char *argv[])
 		workingDir.cdUp();
 	}
 #endif
-	
+
 	QDir::setCurrent(workingDir.absolutePath());
-	
+
 	if (!QGLFormat::hasOpenGL())
 	{
 		QMessageBox::critical(nullptr, "Error", "This application needs OpenGL to run!");

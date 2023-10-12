@@ -81,7 +81,7 @@ static bool IsCommandLine(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-#ifdef _WIN32 //This will allow printf to function on windows when opened from command line	
+#ifdef _WIN32 //This will allow printf to function on windows when opened from command line
 	DWORD stdout_type = GetFileType(GetStdHandle(STD_OUTPUT_HANDLE));
 	if (AttachConsole(ATTACH_PARENT_PROCESS))
 	{
@@ -118,10 +118,10 @@ int main(int argc, char **argv)
         }
     }
 
-#ifdef Q_OS_WIN
-	//enables automatic scaling based on the monitor's pixel density
-	ccApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+// #ifdef Q_OS_WIN
+// 	//enables automatic scaling based on the monitor's pixel density
+// 	ccApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+// #endif
 
     ccApplication::InitOpenGL();
 
@@ -173,7 +173,7 @@ int main(int argc, char **argv)
 		settings.endGroup();
 
 		ccLog::Print(QString("[Global Shift] Max abs. coord = %1 / max abs. diag = %2").arg(maxAbsCoord, 0, 'e', 0).arg(maxAbsDiag, 0, 'e', 0));
-		
+
 		ccGlobalShiftManager::SetMaxCoordinateAbsValue(maxAbsCoord);
 		ccGlobalShiftManager::SetMaxBoundgBoxDiagonal(maxAbsDiag);
 	}
@@ -256,9 +256,9 @@ int main(int argc, char **argv)
 
 		//change the default path to the application one (do this AFTER processing the command line)
 		QDir workingDir = QCoreApplication::applicationDirPath();
-		
+
 	#ifdef Q_OS_MAC
-		// This makes sure that our "working directory" is not within the application bundle	
+		// This makes sure that our "working directory" is not within the application bundle
 		if ( workingDir.dirName() == "MacOS" )
 		{
 			workingDir.cdUp();
