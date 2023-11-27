@@ -30,3 +30,6 @@
 	path = plugins/core/Standard/q3DMASC
 	url = https://github.com/dgirardeau/q3DMASC.git
 	branch = master
+[submodule "plugins/sh_plugins"]
+	path = plugins/sh_plugins
+	url = git@codeup.aliyun.com:635b445d1f49f09a76f78580/ISM/SH_CloudCompare_Plugins.git
